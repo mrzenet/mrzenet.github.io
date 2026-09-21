@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="国奥家具官网提供高品质现代实木家具、定制家居解决方案。涵盖沙发、餐桌椅、衣柜及全屋定制服务，致力于打造舒适、环保的居家生活空间。">
+    <meta name="keywords" content="国奥家具,实木家具,定制家具,全屋定制,现代家具">
+    <title>国奥家具-高品质实木家具与全屋定制解决方案</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #8B4513; /* 经典的实木棕 */
+            --secondary-color: #D2B48C; /* 浅色木纹 */
+            --accent-color: #C0392B; /* 活力红用于促销 */
+            --text-dark: #333333;
+            --text-gray: #666666;
+            --bg-light: #F9F9F9;
+            --white: #FFFFFF;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* 通用布局 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0;
+        }
+
+        .section-title p {
+            color: var(--text-gray);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            font-weight: normal;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #6d360f;
+            border-color: #6d360f;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://picsum.photos/seed/furniture_hero/1920/800') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Features */
+        .features {
+            background-color: var(--white);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Product Categories */
+        .categories .section-padding {
+            background-color: var(--bg-light);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .category-item {
+            position: relative;
+            height: 250px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .category-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .category-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .category-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .category-item:hover .category-overlay {
+            background: rgba(139, 69, 19, 0.6);
+        }
+
+        .category-overlay h3 {
+            color: var(--white);
+            font-size: 1.2rem;
+            border: 1px solid var(--white);
+            padding: 8px 20px;
+        }
+
+        /* Product Showcase */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 4px 8px;
+            font-size: 0.8rem;
+            border-radius: 2px;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-category {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            margin-bottom: 5px;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .product-price {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            flex: 1;
+        }
+
+        /* Customization Section */
+        .customization {
+            background-color: var(--white);
+        }
+
+        .custom-layout {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .custom-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .custom-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .custom-content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .custom-content p {
+            color: var(--text-gray);
+            margin-bottom: 20px;
+        }
+
+        .feature-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c2c2c;
+            color: #ccc;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                margin: 15px 0;
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .custom-layout {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                国奥家具 <span>GuoAo Furniture</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#categories">全屋定制</a></li>
+                    <li><a href="#products">实木家具</a></li>
+                    <li><a href="#about">品牌故事</a></li>
+                    <li><a href="#services">售后服务</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn btn-outline">在线咨询</a>
+                <a href="#" class="btn btn-primary">免费预约量尺</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>匠心打造，实木生活</h1>
+            <p>国奥家具致力于为您提供高品质实木家具与全屋定制解决方案，让家更有温度。</p>
+            <a href="#products" class="btn btn-primary">浏览系列</a>
+            <a href="#custom" class="btn btn-outline" style="border-color: #fff; color: #fff; margin-left: 10px;">定制咨询</a>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section-padding features">
+        <div class="container">
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <div class="feature-icon">🌿</div>
+                    <h3>环保材质</h3>
+                    <p>精选进口与国产优质实木，通过国家环保标准E0级认证，为家人健康保驾护航。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon">📐</div>
+                    <h3>专业设计</h3>
+                    <p>资深设计师团队一对一服务，根据您的户型与生活习惯，量身定制空间方案。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>精湛工艺</h3>
+                    <p>传统榫卯与现代机械工艺结合，每一道工序都经过严格质检，确保耐用稳固。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>无忧售后</h3>
+                    <p>提供长达5年的质保服务，全国联保，专业售后团队快速响应，解决您的后顾之忧。</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section id="categories" class="section-padding categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>全屋定制系列</h2>
+                <p>从玄关到卧室，从厨房到书房，一站式满足您的家居需求</p>
+            </div>
+            <div class="category-grid">
+                <div class="category-item">
+                    <img src="https://picsum.photos/seed/kitchen/400/300" alt="厨房定制">
+                    <div class="category-overlay">
+                        <h3>整体厨房</h3>
+                    </div>
+                </div>
+                <div class="category-item">
+                    <img src="https://picsum.photos/seed/bedroom/400/300" alt="卧室定制">
+                    <div class="category-overlay">
+                        <h3>卧室衣柜</h3>
+                    </div>
+                </div>
+                <div class="category-item">
+                    <img src="https://picsum.photos/seed/living/400/300" alt="客厅定制">
+                    <div class="category-overlay">
+                        <h3>客厅电视柜</h3>
+                    </div>
+                </div>
+                <div class="category-item">
+                    <img src="https://picsum.photos/seed/wardrobe/400/300" alt="衣帽间定制">
+                    <div class="category-overlay">
+                        <h3>衣帽间定制</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section id="products" class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>热销实木家具</h2>
+                <p>经典与现代的完美融合，展现自然质朴的生活美学</p>
+            </div>
+            <div class="showcase-grid">
+                <!-- Product 1 -->
+                <article class="product-card">
+                    <div class="product-image">
+                        <span class="product-badge">新品</span>
+                        <img src="https://picsum.photos/seed/sofa1/400/300" alt="北欧简约三人沙发">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">客厅系列</div>
+                        <h3 class="product-title">北欧简约实木三人沙发</h3>
+                        <span class="product-price">¥3,580</span>
+                        <div class="product-actions">
+                            <button class="btn btn-outline btn-sm" onclick="addToCart('北欧简约三人沙发')">加入对比</button>
+                            <button class="btn btn-primary btn-sm" onclick="addToCart('北欧简约三人沙发')">立即购买</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 2 -->
+                <article class="product-card">
+                    <div class="product-image">
+                        <img src="https://picsum.photos/seed/table2/400/300" alt="北美黑胡桃餐桌">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">餐厅系列</div>
+                        <h3 class="product-title">北美黑胡桃实木餐桌</h3>
+                        <span class="product-price">¥5,200</span>
+                        <div class="product-actions">
+                            <button class="btn btn-outline btn-sm" onclick="addToCart('北美黑胡桃实木餐桌')">加入对比</button>
+                            <button class="btn btn-primary btn-sm" onclick="addToCart('北美黑胡桃实木餐桌')">立即购买</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 3 -->
+                <article class="product-card">
+                    <div class="product-image">
+                        <span class="product-badge">热销</span>
+                        <img src="https://picsum.photos/seed/chair3/400/300" alt="实木餐椅">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">餐厅系列</div>
+                        <h3 class="product-title">简约实木餐椅（四件套）</h3>
+                        <span class="product-price">¥1,890</span>
+                        <div class="product-actions">
+                            <button class="btn btn-outline btn-sm" onclick="addToCart('简约实木餐椅')">加入对比</button>
+                            <button class="btn btn-primary btn-sm" onclick="addToCart('简约实木餐椅')">立即购买</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 4 -->
+                <article class="product-card">
+                    <div class="product-image">
+                        <img src="https://picsum.photos/seed/bed4/400/300" alt="实木床架">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">卧室系列</div>
+                        <h3 class="product-title">原木色实木床架</h3>
+                        <span class="product-price">¥4,500</span>
+                        <div class="product-actions">
+                            <button class="btn btn-outline btn-sm" onclick="addToCart('原木色实木床架')">加入对比</button>
+                            <button class="btn btn-primary btn-sm" onclick="addToCart('原木色实木床架')">立即购买</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="btn btn-outline">查看更多产品</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customization Section -->
+    <section id="custom" class="section-padding customization">
+        <div class="container">
+            <div class="custom-layout">
+                <div class="custom-image">
+                    <img src="https://picsum.photos/seed/cabinet/600/400" alt="全屋定制案例">
+                </div>
+                <div class="custom-content">
+                    <h2>全屋定制，空间利用最大化</h2>
+                    <p>国奥家具拥有独立的生产工厂和强大的设计研发能力。我们不仅仅是在制造家具，更是在为您规划生活。无论是小户型的高效收纳，还是大平层的奢华展示，我们都能完美呈现。</p>
+                    <ul class="feature-list">
+                        <li>3D云设计，所见即所得</li>
+                        <li>16种环保饰面纹理可选</li>
+                        <li>五金配件终身质保</li>
+                        <li>免费上门测量与设计服务</li>
+                    </ul>
+                    <br>
+                    <a href="#" class="btn btn-primary">预约免费设计</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>国奥家具</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.8;">专注实木家具研发与生产15年，秉承“匠心、环保、品质”的品牌理念，致力于为每一个家庭提供健康、舒适的居家环境。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">产品中心</a></li>
+                        <li><a href="#">全屋定制</a></li>
+                        <li><a href="#">新闻动态</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>服务支持</h4>
+                    <ul>
+                        <li><a href="#">设计咨询</a></li>
+                        <li><a href="#">预约量尺</a></li>
+                        <li><a href="#">售后政策</a></li>
+                        <li><a href="#">常见问题</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li>电话：400-123-4567</li>
+                        <li>邮箱：service@guoao.com</li>
+                        <li>地址：中国家具制造基地XX路88号</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 国奥家具 版权所有 | 本站页面仅供参考，具体以实物为准</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的交互脚本：模拟加入购物车反馈
+        function addToCart(productName) {
+            // 使用非阻塞的提示方式
+            const toast = document.createElement('div');
+            toast.style.position = 'fixed';
+            toast.style.bottom = '20px';
+            toast.style.left = '50%';
+            toast.style.transform = 'translateX(-50%)';
+            toast.style.backgroundColor = 'rgba(0,0,0,0.8)';
+            toast.style.color = '#fff';
+            toast.style.padding = '12px 24px';
+            toast.style.borderRadius = '4px';
+            toast.style.zIndex = '2000';
+            toast.style.fontSize = '0.9rem';
+            toast.textContent = `已将 "${productName}" 加入购物车`;
+            
+            document.body.appendChild(toast);
+            
+            // 3秒后移除
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.5s';
+                setTimeout(() => toast.remove(), 500);
+            }, 3000);
+        }
+
+        // 简单的平滑滚动修正
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
