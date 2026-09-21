@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="明智之举 - 深度解析人生决策、投资理财与职业规划中的理性选择指南。提供科学决策模型、风险分析工具及成功案例分析。">
+    <meta name="keywords" content="明智之举, 决策分析, 理性选择, 风险评估, 职业规划, 投资理财">
+    <title>明智之举 - 理性决策与人生选择指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #27ae60;
+            --accent-hover: #219150;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --spacing-unit: 1rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-color);
+        }
+
+        .cta-button {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+            width: 100%;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+        }
+
+        /* Decision Matrix Grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border-top: 4px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card.accent { border-top-color: var(--accent-color); }
+        .card.blue { border-top-color: #3498db; }
+        .card.orange { border-top-color: #e67e22; }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .card-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .card-list li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .card-link {
+            color: var(--accent-color);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* Deep Dive Article */
+        .article-section {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 4rem;
+        }
+
+        .article-content h3 {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--primary-color);
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            text-align: justify;
+        }
+
+        .article-content strong {
+            color: var(--primary-color);
+        }
+
+        .highlight-box {
+            background-color: #e8f5e9;
+            border-left: 4px solid var(--accent-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-bottom: 4rem;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--card-bg);
+            transition: background-color 0.2s;
+        }
+
+        .faq-question:hover {
+            background-color: #f1f1f1;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 1.5rem;
+            background-color: #fafafa;
+            color: var(--text-secondary);
+        }
+
+        .faq-answer p {
+            padding: 1.5rem 0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px; /* Approximate max height */
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 1rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            color: white;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: #bdc3c7;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Simplified for mobile */
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .article-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span>明智之举</span>智库
+            </a>
+            <nav class="nav-links">
+                <a href="#decision-models" class="active">决策模型</a>
+                <a href="#career">职业规划</a>
+                <a href="#finance">投资理财</a>
+                <a href="#faq">常见问题</a>
+            </nav>
+            <a href="#contact" class="cta-button">获取决策报告</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>做出真正的明智之举</h1>
+        <p>在充满不确定性的时代，如何运用理性思维、数据分析与长远视角，做出最有利于个人成长与财富积累的关键选择。</p>
+        <div class="hero-tags">
+            <span class="hero-tag">理性决策</span>
+            <span class="hero-tag">风险评估</span>
+            <span class="hero-tag">长期主义</span>
+            <span class="hero-tag">认知升级</span>
+        </div>
+    </section>
+
+    <main>
+        <!-- Section 1: Decision Models -->
+        <section id="decision-models">
+            <div class="section-header">
+                <h2>科学决策模型</h2>
+                <p>摆脱情绪干扰，建立结构化的思考框架</p>
+            </div>
+            
+            <div class="grid-container">
+                <article class="card accent">
+                    <div class="card-icon">📊</div>
+                    <h3>成本效益分析</h3>
+                    <p>在做出任何重大决定前，列出所有显性与隐性成本与收益，计算净现值，确保投入产出比符合预期。</p>
+                    <ul class="card-list">
+                        <li>量化显性成本（金钱、时间）</li>
+                        <li>评估隐性成本（机会成本、情绪损耗）</li>
+                        <li>设定ROI阈值</li>
+                    </ul>
+                    <a href="#" class="card-link">查看工具模板 &rarr;</a>
+                </article>
+
+                <article class="card blue">
+                    <div class="card-icon">⚖️</div>
+                    <h3>利弊权衡矩阵</h3>
+                    <p>通过表格形式将决策选项的优缺点可视化，帮助决策者在复杂情境下快速捕捉关键信息。</p>
+                    <ul class="card-list">
+                        <li>横向列出选项</li>
+                        <li>纵向列出维度（风险、收益、难度）</li>
+                        <li>加权评分系统</li>
+                    </ul>
+                    <a href="#" class="card-link">开始分析 &rarr;</a>
+                </article>
+
+                <article class="card orange">
+                    <div class="card-icon">🔮</div>
+                    <h3>情景推演法</h3>
+                    <p>不仅考虑最可能发生的情况，还要预演“最好”和“最坏”两种极端情景，制定相应的备选方案。</p>
+                    <ul class="card-list">
+                        <li>设定乐观/中性/悲观情景</li>
+                        <li>评估心理承受力</li>
+                        <li>准备Plan B与Plan C</li>
+                    </ul>
+                    <a href="#" class="card-link">学习情景规划 &rarr;</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section 2: Deep Dive Content -->
+        <section class="article-section">
+            <h2>深度解析：什么是真正的明智之举？</h2>
+            <div class="article-content">
+                <p>在日常生活中，“明智之举”往往被等同于“正确的选择”或“赚到了便宜”。然而，从认知科学和决策心理学的角度来看，<strong>明智</strong>的本质是<strong>在不确定性中追求最优期望值的能力</strong>。</p>
+                
+                <h3>1. 区分“正确”与“明智”</h3>
+                <p>很多时候，我们做出了一个在当时看来很正确的决定，但由于缺乏长远视角，结果却并不理想。例如，为了短期利益放弃了技能学习，这虽然在当下是“正确”的，但在时间维度上并非“明智”。</p>
+
+                <div class="highlight-box">
+                    <strong>核心定义：</strong>明智之举是指那些能够最大化未来长期收益、最小化长期风险，且符合个人价值观与生命目标的决策路径。
+                </div>
+
+                <h3>2. 克服认知偏差</h3>
+                <p>人类的决策系统天生带有缺陷。为了做出明智之举，我们需要警惕以下常见陷阱：</p>
+                <ul>
+                    <li><strong>确认偏误：</strong>只寻找支持自己观点的证据，忽视反面信息。</li>
+                    <li><strong>沉没成本谬误：</strong>因为已经投入了时间或金钱，而不愿意及时止损。</li>
+                    <li><strong>过度自信：</strong>高估自己的预测能力和控制力。</li>
+                </ul>
+
+                <h3>3. 理性投资的底层逻辑</h3>
+                <p>在投资理财领域，明智之举往往意味着反人性。这包括在市场恐慌时保持冷静（如定投策略），在市场狂热时保持警惕。真正的明智不是预测市场，而是管理好自己的风险敞口。</p>
+            </div>
+        </section>
+
+        <!-- Section 3: FAQ -->
+        <section id="faq" class="faq-section">
+            <div class="section-header">
+                <h2>常见问题解答</h2>
+                <p>关于明智决策的常见误区与解答</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">如果做出了不明智的决定，应该怎么办？</div>
+                <div class="faq-answer">
+                    <p>首先，接受现实是明智的第一步。不要沉溺于自责或后悔中。分析决策失误的根本原因（是信息不足、情绪失控还是逻辑漏洞），并制定纠正措施。将错误视为获取反馈的宝贵机会，而不是失败的终结。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">如何判断一个选择是否具有长远价值？</div>
+                <div class="faq-answer">
+                    <p>可以问自己三个问题：1. 如果十年后回顾这个决定，我会感谢自己吗？2. 这个选择是否在增强我的核心能力或资产？3. 它是否符合我的长期人生目标？</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">为什么有时候“随大流”看起来很明智？</div>
+                <div class="faq-answer">
+                    <p>随大流在短期内往往具有安全性，因为社会共识提供了某种背书。然而，真正的明智之举往往需要独立思考。只有当群体共识基于充分的数据和逻辑时，随大流才是明智的。否则，它可能只是从众心理的表现。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>明智之举智库</h4>
+                <p style="color: #bdc3c7; font-size: 0.9rem;">
+                    致力于提供客观、理性的决策支持工具与资讯，帮助每一位读者在复杂的世界中找到属于自己的方向。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>快速导航</h4>
+                <ul>
+                    <li><a href="#">决策模型库</a></li>
+                    <li><a href="#">风险管理指南</a></li>
+                    <li><a href="#">职业发展路径</a></li>
+                    <li><a href="#">会员订阅</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>联系我们</h4>
+                <ul>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">合作投稿</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                    <li><a href="#">服务条款</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 明智之举智库. All Rights Reserved. 保留所有权利.
+        </div>
+    </footer>
+
+    <script>
+        // Simple FAQ Accordion Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
