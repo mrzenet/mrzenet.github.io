@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>要害 - 深度解析人体关键节点与安全防护指南</title>
+    <meta name="description" content="要害网提供关于人体要害部位的科学解析、格斗安全知识、防身术教学及自我保护指南。专业、严谨，帮助您了解人体脆弱点与安全防护措施。">
+    <meta name="keywords" content="要害,人体要害,防身术,安全防护,格斗技巧,自我保护">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #d32f2f;
+            --secondary-color: #212121;
+            --accent-color: #ff5722;
+            --bg-color: #f5f5f5;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #666666;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #424242 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        main {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+        }
+
+        /* Grid Layouts */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-image {
+            height: 200px;
+            background-color: #ddd;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .card-body {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .card-excerpt {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .card-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-link::after {
+            content: '→';
+            margin-left: 5px;
+            transition: margin-left 0.2s;
+        }
+
+        .card-link:hover::after {
+            margin-left: 10px;
+        }
+
+        /* Safety Warning Section */
+        .safety-section {
+            background-color: #fff3e0;
+            border-left: 5px solid var(--accent-color);
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .safety-section h3 {
+            color: #e65100;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Info List */
+        .info-list {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 40px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 20px;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #ffebee;
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .info-content h4 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .info-content p {
+            color: var(--text-light);
+            font-size: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #999;
+            padding: 50px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+            }
+
+            nav ul {
+                margin-top: 15px;
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .info-item {
+                flex-direction: column;
+            }
+
+            .info-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <a href="#" class="logo">要害<span>百科</span></a>
+        <nav>
+            <ul>
+                <li><a href="#body">人体结构</a></li>
+                <li><a href="#defense">防身技巧</a></li>
+                <li><a href="#safety">安全防护</a></li>
+                <li><a href="#faq">常见问题</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>了解人体要害，掌握自我保护</h1>
+        <p>科学解析人体关键脆弱部位，提供专业的防身术指导与安全防护建议。安全无小事，知识护身行。</p>
+        <a href="#body" class="cta-button">探索人体要害</a>
+    </div>
+</section>
+
+<main class="container">
+    
+    <!-- Introduction Section -->
+    <section id="intro" style="margin-bottom: 60px;">
+        <div class="section-title">
+            <h2>什么是人体要害？</h2>
+            <p>科学认知与安全警示</p>
+        </div>
+        <article>
+            <p style="font-size: 16px; color: #444; margin-bottom: 20px;">
+                人体要害，通常指人体中结构脆弱、一旦遭受重击或特定攻击会导致疼痛、丧失行动能力甚至危及生命的部位。了解这些部位并非为了施暴，而是为了在遭遇突发危险时，能够利用人体生理结构的弱点进行有效的<strong>自我防卫</strong>或<strong>紧急避险</strong>。
+            </p>
+            <div class="safety-section">
+                <h3>⚠️ 核心警示</h3>
+                <p style="font-size: 15px; margin-top: 10px;">
+                    本站所有内容仅供学习、研究和自卫参考。暴力行为不仅违法，也会对他人造成不可逆的身体伤害。请务必在合法合规的前提下运用所学的安全知识。
+                </p>
+            </div>
+        </article>
+    </section>
+
+    <!-- Key Body Points Grid -->
+    <section id="body">
+        <div class="section-title">
+            <h2>常见人体要害部位解析</h2>
+            <p>深入解剖学视角的脆弱点分析</p>
+        </div>
+        <div class="grid-3">
+            <!-- Point 1 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://picsum.photos/seed/eyes/400/300" alt="眼睛攻击示意图">
+                    <span class="card-tag">视觉神经</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">眼部区域</h3>
+                    <p class="card-excerpt">眼球是人体最脆弱的器官之一。异物侵入或剧烈撞击会导致视力受损、视网膜脱落，甚至造成永久性失明或脑震荡。</p>
+                    <a href="#" class="card-link">查看眼部防护指南</a>
+                </div>
+            </div>
+
+            <!-- Point 2 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://picsum.photos/seed/groin/400/300" alt="裆部示意图">
+                    <span class="card-tag">生殖神经</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">裆部</h3>
+                    <p class="card-excerpt">下腹部和生殖区域神经密集且敏感。遭受踢击或挤压会引起剧烈疼痛、暂时性丧失战斗力，是防身反击的常用目标。</p>
+                    <a href="#" class="card-link">学习裆部防御</a>
+                </div>
+            </div>
+
+            <!-- Point 3 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://picsum.photos/seed/neck/400/300" alt="颈部示意图">
+                    <span class="card-tag">生命中枢</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">颈部</h3>
+                    <p class="card-excerpt">颈部包含气管、食道、颈动脉等重要结构。控制或破坏颈部会导致窒息、大出血，对生命威胁极大。</p>
+                    <a href="#" class="card-link">了解颈部控制技巧</a>
+                </div>
+            </div>
+
+            <!-- Point 4 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://picsum.photos/seed/knees/400/300" alt="膝盖示意图">
+                    <span class="card-tag">关节结构</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">膝盖与肘部</h3>
+                    <p class="card-excerpt">膝关节是人体最复杂的关节之一，承受全身重量。向内或向外扭转膝盖可造成韧带断裂；肘部撞击同样具有破坏力。</p>
+                    <a href="#" class="card-link">关节破坏原理</a>
+                </div>
+            </div>
+
+            <!-- Point 5 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://picsum.photos/seed/nose/400/300" alt="鼻子示意图">
+                    <span class="card-tag">软组织</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">鼻子</h3>
+                    <p class="card-excerpt">鼻部软骨脆弱，遭受重击易导致鼻骨骨折、大出血和面部剧痛。虽然致死率低，但能有效打断攻击者的节奏。</p>
+                    <a href="#" class="card-link">鼻部打击效果分析</a>
+                </div>
+            </div>
+
+            <!-- Point 6 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://picsum.photos/seed/solar/400/300" alt="太阳神经丛示意图">
+                    <span class="card-tag">神经丛</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">太阳神经丛</h3>
+                    <p class="card-excerpt">位于肚脐上方的腹部区域。受到重击会引起呼吸骤停、肌肉痉挛和极度疼痛，常用于制服攻击者。</p>
+                    <a href="#" class="card-link">腹部冲击技巧</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Defense & Safety Info -->
+    <section id="defense" style="margin-top: 80px;">
+        <div class="section-title">
+            <h2>防身与安全防护</h2>
+            <p>预防胜于治疗，防御重于反击</p>
+        </div>
+        
+        <div class="info-list">
+            <div class="info-item">
+                <div class="info-icon">🛡️</div>
+                <div class="info-content">
+                    <h4>环境安全意识</h4>
+                    <p>保持对周围环境的警惕，避免进入光线昏暗、监控死角或人群稀少的区域。了解逃生路线，随身携带防身喷雾或哨子。</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon">🏃</div>
+                <div class="info-content">
+                    <h4>优先逃离策略</h4>
+                    <p>在遭遇威胁时，生命安全是首要目标。一旦确认危险，应立即大声呼救并全力向开阔地带、有监控或有其他人的地方逃跑。</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon">👊</div>
+                <div class="info-content">
+                    <h4>合法防卫限度</h4>
+                    <p>了解法律对于正当防卫的定义。防卫行为必须与不法侵害的程度相当，不得实施过激的报复性攻击。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" style="margin-top: 80px;">
+        <div class="section-title">
+            <h2>常见问题解答</h2>
+            <p>关于人体要害的误区与解答</p>
+        </div>
+        <div class="grid-3">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">打击要害一定会致残吗？</h3>
+                    <p class="card-excerpt">不一定。打击要害的效果取决于力度、角度和对方的身体状况。轻击可能仅引起疼痛，重击则可能导致严重后果。即使重击，也不保证能完全制服对方。</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">女性应该重点防范哪些要害？</h3>
+                    <p class="card-excerpt">女性在面对袭击时，应优先保护头部和颈部，并利用随身物品（如钥匙、笔）攻击袭击者的眼睛或下体，同时利用身高优势踢击其膝盖或裆部。</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">防身术训练需要多久见效？</h3>
+                    <p class="card-excerpt">防身术不仅是技术，更是心理素质的培养。基础训练可能需要数周，但要达到熟练运用并形成本能反应，通常需要几个月甚至更长时间的持续练习。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>关于要害</h4>
+                <p style="font-size: 14px; color: #999;">
+                    专注于人体结构解析与安全防护知识的科普平台，致力于提供科学、客观、安全的自卫指导。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>快速导航</h4>
+                <ul>
+                    <li><a href="#body">人体要害部位</a></li>
+                    <li><a href="#defense">防身技巧</a></li>
+                    <li><a href="#safety">安全知识</a></li>
+                    <li><a href="#">免责声明</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>免责声明</h4>
+                <ul>
+                    <li><a href="#">内容仅供学习</a></li>
+                    <li><a href="#">严禁违法使用</a></li>
+                    <li><a href="#">风险自负声明</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 要害百科 版权所有. 本站内容仅供参考，不构成医疗或法律建议。
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
