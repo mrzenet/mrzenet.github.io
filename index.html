@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>茶杯狐-高清动漫与影视资源聚合平台</title>
+    <meta name="description" content="茶杯狐提供最新最全的动漫、日漫、国漫及高清影视资源在线观看与下载，包含热门番剧、经典老番及高清电影合集。">
+    <meta name="keywords" content="茶杯狐,动漫,日漫,国漫,高清影视,在线观看,动漫资源">
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --dark-bg: #1a1a2e;
+            --card-bg: #16213e;
+            --text-main: #eaeaea;
+            --text-sub: #a0a0a0;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff5252;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary-color);
+            color: var(--dark-bg);
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(22, 33, 62, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .search-box {
+            display: flex;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 4px;
+            border: 1px solid #333;
+        }
+
+        .search-box input {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            outline: none;
+            width: 200px;
+        }
+
+        .search-box button {
+            background: transparent;
+            border: none;
+            color: var(--text-sub);
+            cursor: pointer;
+            padding: 0 10px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(to right, rgba(26, 26, 46, 0.9), rgba(26, 26, 46, 0.4)), url('https://picsum.photos/seed/animebg/1920/1080') center/cover no-repeat;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero-tag {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, #a0a0a0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-sub);
+            margin-bottom: 30px;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 16px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .section-more {
+            font-size: 14px;
+            color: var(--text-sub);
+        }
+
+        .section-more:hover {
+            color: var(--primary-color);
+        }
+
+        /* Grid Layout */
+        .anime-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 24px;
+        }
+
+        .anime-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .anime-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .card-cover {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            position: relative;
+        }
+
+        .card-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: flex-end;
+            padding: 16px;
+        }
+
+        .anime-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .card-info {
+            padding: 16px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-meta {
+            font-size: 12px;
+            color: var(--text-sub);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .rating {
+            color: #f1c40f;
+        }
+
+        /* Category Section */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .cat-item {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 8px;
+            text-align: center;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+
+        .cat-item:hover {
+            background: #1f2e50;
+        }
+
+        .cat-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .cat-name {
+            font-weight: 600;
+        }
+
+        /* Ranking Table */
+        .ranking-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .ranking-table th {
+            text-align: left;
+            padding: 12px;
+            color: var(--text-sub);
+            font-weight: 500;
+            border-bottom: 1px solid #333;
+        }
+
+        .ranking-table td {
+            padding: 16px 12px;
+            border-bottom: 1px solid #222;
+            vertical-align: middle;
+        }
+
+        .rank-num {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #333;
+            color: var(--text-sub);
+            font-size: 12px;
+            margin-right: 12px;
+        }
+
+        .rank-top-1 { background: var(--primary-color); color: white; }
+        .rank-top-2 { background: #e67e22; color: white; }
+        .rank-top-3 { background: #f1c40f; color: #333; }
+
+        .rank-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .rank-thumb {
+            width: 50px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 12px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0f1526;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+            border-top: 1px solid #222;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand p {
+            color: var(--text-sub);
+            margin-top: 16px;
+            font-size: 14px;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-sub);
+            font-size: 14px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+            color: #555;
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 16px 0;
+                gap: 16px;
+            }
+
+            nav ul {
+                gap: 16px;
+                font-size: 14px;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .search-box input {
+                width: 100%;
+            }
+
+            .hero {
+                height: 400px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .anime-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <a href="#" class="logo">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" fill="#ff6b6b" fill-opacity="0.2"/>
+                <path d="M12 6L12 18M6 12L18 12" stroke="#ff6b6b" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span>茶杯狐</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">首页</a></li>
+                <li><a href="#">动漫</a></li>
+                <li><a href="#">日漫</a></li>
+                <li><a href="#">国漫</a></li>
+                <li><a href="#">电影</a></li>
+                <li><a href="#">排行榜</a></li>
+            </ul>
+        </nav>
+        <div class="search-box">
+            <input type="text" placeholder="搜索动漫、电影、番剧...">
+            <button type="button">🔍</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <span class="hero-tag">本周热门推荐</span>
+            <h1>探索无限精彩的二次元世界</h1>
+            <p>茶杯狐汇集海量高清动漫资源，无论是热血少年漫、治愈系日常番，还是经典日漫与国产动画，这里应有尽有。高清画质，流畅播放，尽享视听盛宴。</p>
+            <div>
+                <a href="#" class="btn btn-primary">立即开始观看</a>
+                <a href="#" class="btn btn-outline" style="margin-left: 10px;">查看排行榜</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="container">
+        <div class="category-grid">
+            <div class="cat-item">
+                <span class="cat-icon">🔥</span>
+                <span class="cat-name">热门动漫</span>
+            </div>
+            <div class="cat-item">
+                <span class="cat-icon">🎌</span>
+                <span class="cat-name">日漫精选</span>
+            </div>
+            <div class="cat-item">
+                <span class="cat-icon">🐉</span>
+                <span class="cat-name">国漫崛起</span>
+            </div>
+            <div class="cat-item">
+                <span class="cat-icon">🎬</span>
+                <span class="cat-name">高清电影</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Updates -->
+    <section class="container">
+        <div class="section-header">
+            <h2 class="section-title">最新更新</h2>
+            <a href="#" class="section-more">查看更多 &gt;</a>
+        </div>
+        <div class="anime-grid">
+            <!-- Card 1 -->
+            <article class="anime-card">
+                <div class="card-cover">
+                    <img src="https://picsum.photos/seed/anime1/300/400" alt="动漫封面">
+                    <div class="card-overlay">
+                        <button class="btn btn-primary" style="font-size:12px; padding: 6px 12px;">立即播放</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">星际牛仔：重制版</h3>
+                    <div class="card-meta">
+                        <span>更新至第12集</span>
+                        <span class="rating">★★★★☆</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="anime-card">
+                <div class="card-cover">
+                    <img src="https://picsum.photos/seed/anime2/300/400" alt="动漫封面">
+                    <div class="card-overlay">
+                        <button class="btn btn-primary" style="font-size:12px; padding: 6px 12px;">立即播放</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">夏日重现</h3>
+                    <div class="card-meta">
+                        <span>更新至第05集</span>
+                        <span class="rating">★★★★★</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="anime-card">
+                <div class="card-cover">
+                    <img src="https://picsum.photos/seed/anime3/300/400" alt="动漫封面">
+                    <div class="card-overlay">
+                        <button class="btn btn-primary" style="font-size:12px; padding: 6px 12px;">立即播放</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">独行月球</h3>
+                    <div class="card-meta">
+                        <span>已完结</span>
+                        <span class="rating">★★★★☆</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="anime-card">
+                <div class="card-cover">
+                    <img src="https://picsum.photos/seed/anime4/300/400" alt="动漫封面">
+                    <div class="card-overlay">
+                        <button class="btn btn-primary" style="font-size:12px; padding: 6px 12px;">立即播放</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">咒术回战</h3>
+                    <div class="card-meta">
+                        <span>更新至第24集</span>
+                        <span class="rating">★★★★★</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Ranking Section -->
+    <section class="container" style="background-color: #16213e; border-radius: 12px; padding: 40px;">
+        <div class="section-header">
+            <h2 class="section-title">本周热门榜单</h2>
+            <a href="#" class="section-more">查看完整榜单 &gt;</a>
+        </div>
+        <table class="ranking-table">
+            <thead>
+                <tr>
+                    <th width="80">排名</th>
+                    <th>作品名称</th>
+                    <th>类型</th>
+                    <th>评分</th>
+                    <th>播放量</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="rank-num rank-top-1">1</span></td>
+                    <td>
+                        <div class="rank-info">
+                            <img src="https://picsum.photos/seed/rank1/50/70" class="rank-thumb" alt="封面">
+                            <span>进击的巨人</span>
+                        </div>
+                    </td>
+                    <td>热血/冒险</td>
+                    <td class="rating">9.8</td>
+                    <td>1.2M</td>
+                </tr>
+                <tr>
+                    <td><span class="rank-num rank-top-2">2</span></td>
+                    <td>
+                        <div class="rank-info">
+                            <img src="https://picsum.photos/seed/rank2/50/70" class="rank-thumb" alt="封面">
+                            <span>鬼灭之刃</span>
+                        </div>
+                    </td>
+                    <td>动作/奇幻</td>
+                    <td class="rating">9.6</td>
+                    <td>980K</td>
+                </tr>
+                <tr>
+                    <td><span class="rank-num rank-top-3">3</span></td>
+                    <td>
+                        <div class="rank-info">
+                            <img src="https://picsum.photos/seed/rank3/50/70" class="rank-thumb" alt="封面">
+                            <span>间谍过家家</span>
+                        </div>
+                    </td>
+                    <td>喜剧/家庭</td>
+                    <td class="rating">9.5</td>
+                    <td>850K</td>
+                </tr>
+                <tr>
+                    <td><span class="rank-num">4</span></td>
+                    <td>
+                        <div class="rank-info">
+                            <img src="https://picsum.photos/seed/rank4/50/70" class="rank-thumb" alt="封面">
+                            <span>葬送的芙莉莲</span>
+                        </div>
+                    </td>
+                    <td>奇幻/冒险</td>
+                    <td class="rating">9.4</td>
+                    <td>720K</td>
+                </tr>
+                <tr>
+                    <td><span class="rank-num">5</span></td>
+                    <td>
+                        <div class="rank-info">
+                            <img src="https://picsum.photos/seed/rank5/50/70" class="rank-thumb" alt="封面">
+                            <span>葬送的芙莉莲</span>
+                        </div>
+                    </td>
+                    <td>奇幻/冒险</td>
+                    <td class="rating">9.4</td>
+                    <td>720K</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Feature Section -->
+    <section class="container">
+        <div class="section-header">
+            <h2 class="section-title">为什么选择茶杯狐</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            <div style="background: var(--card-bg); padding: 30px; border-radius: 8px;">
+                <h3 style="color: var(--primary-color); margin-bottom: 10px;">海量资源</h3>
+                <p style="color: var(--text-sub); font-size: 14px;">收录超过10,000部动漫与影视作品，涵盖从90年代经典到2024年最新连载，满足不同年龄段的观看需求。</p>
+            </div>
+            <div style="background: var(--card-bg); padding: 30px; border-radius: 8px;">
+                <h3 style="color: var(--secondary-color); margin-bottom: 10px;">高清画质</h3>
+                <p style="color: var(--text-sub); font-size: 14px;">提供1080P及4K超清播放源，支持倍速调节与弹幕互动，带来影院级的视觉体验。</p>
+            </div>
+            <div style="background: var(--card-bg); padding: 30px; border-radius: 8px;">
+                <h3 style="color: #a29bfe; margin-bottom: 10px;">极速更新</h3>
+                <p style="color: var(--text-sub); font-size: 14px;">紧跟日韩及国内更新节奏，第一时间推送新番与剧场版资源，不再错过任何精彩剧情。</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo">茶杯狐</a>
+                <p>专注于动漫与影视资源的聚合平台，致力于为二次元爱好者提供最优质的在线观看服务。</p>
+            </div>
+            <div class="footer-col">
+                <h4>网站导航</h4>
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">动漫列表</a></li>
+                    <li><a href="#">日漫专区</a></li>
+                    <li><a href="#">国漫专区</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>帮助中心</h4>
+                <ul>
+                    <li><a href="#">播放器使用指南</a></li>
+                    <li><a href="#">如何下载资源</a></li>
+                    <li><a href="#">版权声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>关注我们</h4>
+                <ul>
+                    <li><a href="#">微信公众号</a></li>
+                    <li><a href="#">新浪微博</a></li>
+                    <li><a href="#">Bilibili账号</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 茶杯狐. All Rights Reserved. 本站资源仅供学习交流使用，请支持正版。</p>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</body>
+                              </html>
