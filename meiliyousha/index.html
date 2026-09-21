@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="美里有纱影片资源分享与深度解析平台，提供高清视频内容观看、分类浏览及用户评价反馈。">
+    <meta name="keywords" content="美里有纱影片,美里有纱,高清视频,在线观看,影视资源">
+    <title>美里有纱影片-高清影视资源与深度观看指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --bg-color: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --accent-color: #e50914;
+            --accent-hover: #b20710;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --border-radius: 8px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(15, 15, 15, 0.95);
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: var(--spacing-lg);
+        }
+
+        .nav-menu a {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--text-main);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--bg-color)), 
+                        url('https://picsum.photos/seed/melody/1600/600') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 var(--spacing-md);
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #ddd;
+            margin-bottom: var(--spacing-lg);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* Category Section */
+        .categories {
+            padding: var(--spacing-lg) 0;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-md);
+            border-left: 4px solid var(--accent-color);
+            padding-left: var(--spacing-md);
+        }
+
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .cat-card {
+            background-color: var(--card-bg);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            text-align: center;
+            border: 1px solid #333;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .cat-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-color);
+        }
+
+        .cat-icon {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-sm);
+            display: block;
+        }
+
+        /* Video Grid */
+        .video-section {
+            padding: var(--spacing-lg) 0;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .video-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: transform 0.2s;
+            border: 1px solid #333;
+        }
+
+        .video-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .video-thumb {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background-color: #000;
+        }
+
+        .video-thumb img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .video-card:hover .play-overlay {
+            opacity: 1;
+        }
+
+        .play-icon {
+            width: 48px;
+            height: 48px;
+            background-color: rgba(229, 9, 20, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .play-icon::after {
+            content: '';
+            border-style: solid;
+            border-width: 8px 0 8px 14px;
+            border-color: transparent transparent transparent white;
+            margin-left: 4px;
+        }
+
+        .video-info {
+            padding: var(--spacing-md);
+        }
+
+        .video-title {
+            font-size: 1rem;
+            margin-bottom: var(--spacing-sm);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: var(--spacing-lg) 0;
+            background-color: #151515;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #333;
+            padding: var(--spacing-md) 0;
+        }
+
+        .faq-question {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            display: none; /* JS will toggle this */
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            padding: var(--spacing-lg) 0 var(--spacing-md);
+            margin-top: var(--spacing-lg);
+            border-top: 1px solid #333;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .footer-col h4 {
+            color: var(--text-main);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-col ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-muted);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            color: #666;
+            font-size: 0.85rem;
+            padding-top: var(--spacing-md);
+            border-top: 1px solid #222;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            .nav-menu {
+                display: none; /* Simplified for mobile */
+            }
+            .container {
+                padding: 0 var(--spacing-sm);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+                美里有纱影片库
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="active">首页</a>
+                <a href="#">最新更新</a>
+                <a href="#">分类浏览</a>
+                <a href="#">排行榜</a>
+                <a href="#">关于我们</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>探索美里有纱的精彩作品</h1>
+                <p>汇集高清影片资源，提供流畅的在线观看体验。深入了解作品详情与观看指南。</p>
+                <a href="#latest" class="btn">立即观看</a>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section class="container categories">
+            <h2 class="section-title">热门分类</h2>
+            <div class="cat-grid">
+                <div class="cat-card">
+                    <span class="cat-icon">🎬</span>
+                    <h3>剧情向</h3>
+                </div>
+                <div class="cat-card">
+                    <span class="cat-icon">🔥</span>
+                    <h3>热门精选</h3>
+                </div>
+                <div class="cat-card">
+                    <span class="cat-icon">💎</span>
+                    <h3>高清画质</h3>
+                </div>
+                <div class="cat-card">
+                    <span class="cat-icon">📅</span>
+                    <h3>近期更新</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Videos -->
+        <section id="latest" class="container video-section">
+            <h2 class="section-title">最新美里有纱影片</h2>
+            <div class="video-grid">
+                <!-- Video Item 1 -->
+                <article class="video-card">
+                    <div class="video-thumb">
+                        <img src="https://picsum.photos/seed/video1/400/225" alt="美里有纱影片封面">
+                        <div class="play-overlay"></div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">经典回顾：光影之间的故事</h3>
+                        <div class="video-meta">
+                            <span>2023-10-15</span>
+                            <span>高清</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Video Item 2 -->
+                <article class="video-card">
+                    <div class="video-thumb">
+                        <img src="https://picsum.photos/seed/video2/400/225" alt="美里有纱影片封面">
+                        <div class="play-overlay"></div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">独家专访：创作背后的灵感</h3>
+                        <div class="video-meta">
+                            <span>2023-10-14</span>
+                            <span>4K</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Video Item 3 -->
+                <article class="video-card">
+                    <div class="video-thumb">
+                        <img src="https://picsum.photos/seed/video3/400/225" alt="美里有纱影片封面">
+                        <div class="play-overlay"></div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">热门合集：精选片段大赏</h3>
+                        <div class="video-meta">
+                            <span>2023-10-12</span>
+                            <span>HD</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Video Item 4 -->
+                <article class="video-card">
+                    <div class="video-thumb">
+                        <img src="https://picsum.photos/seed/video4/400/225" alt="美里有纱影片封面">
+                        <div class="play-overlay"></div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">幕后花絮：拍摄现场直击</h3>
+                        <div class="video-meta">
+                            <span>2023-10-10</span>
+                            <span>HD</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div style="text-align: center; margin-top: var(--spacing-lg);">
+                <a href="#" class="btn" style="background-color: transparent; border: 1px solid #555;">加载更多</a>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="container faq-section">
+            <h2 class="section-title">观看指南与常见问题</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">如何观看高清影片？</div>
+                <div class="faq-answer">我们提供多种清晰度选择。建议在稳定的网络环境下，点击播放器右上角的设置图标，手动选择最高清晰度（如1080P或4K）以获得最佳体验。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">更新频率是怎样的？</div>
+                <div class="faq-answer">我们每日更新最新的影片资源，确保您能第一时间看到最新发布的美里有纱相关作品。您可以关注“最新更新”栏目获取通知。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">支持哪些设备观看？</div>
+                <div class="faq-answer">本站支持PC端浏览器、智能手机（iOS/Android）以及平板电脑。页面采用响应式设计，自动适配您的屏幕尺寸。</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <p style="color: #888; font-size: 0.9rem;">致力于为用户提供最优质的影视资源浏览体验，内容分类清晰，更新及时。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">网站地图</a></li>
+                        <li><a href="#">免责声明</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系支持</h4>
+                    <ul>
+                        <li><a href="#">意见反馈</a></li>
+                        <li><a href="#">资源合作</a></li>
+                        <li><a href="#">帮助中心</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 美里有纱影片库 版权所有. 本站内容仅供学习交流使用.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple FAQ Toggle Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
