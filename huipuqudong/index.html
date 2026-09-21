@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>惠普驱动程序 - 官方下载中心与安装维护指南</title>
+    <meta name="description" content="惠普驱动程序官方下载中心，提供HP打印机、电脑、一体机及外设的最新驱动程序下载。包含安装教程、故障排除指南及版本更新说明。">
+    <meta name="keywords" content="惠普驱动程序,HP驱动下载,打印机驱动,惠普官网驱动,打印机安装">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0096d6;
+            --primary-dark: #007bb8;
+            --secondary-color: #f2f2f2;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --text-light: #999999;
+            --border-color: #e1e1e1;
+            --white: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.12);
+            --radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: #f9f9f9;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: var(--secondary-color);
+            border-radius: 20px;
+            padding: 5px 15px;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            outline: none;
+            padding: 5px;
+            font-size: 14px;
+            width: 150px;
+        }
+
+        .search-box button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Main Layout */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            border-radius: var(--radius);
+            padding: 40px;
+            margin-bottom: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 25px;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.1s, opacity 0.2s;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-primary {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255,255,255,0.2);
+            color: var(--white);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .hero-image {
+            flex: 0 0 350px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Step Wizard */
+        .guide-section {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .step-wizard {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .step-wizard::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--border-color);
+            z-index: 0;
+        }
+
+        .step-item {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            flex: 1;
+        }
+
+        .step-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--white);
+            border: 3px solid var(--border-color);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--text-light);
+            transition: all 0.3s;
+        }
+
+        .step-item.active .step-icon {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .step-item.completed .step-icon {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .step-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        /* Filter Tabs */
+        .filter-tabs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .tab {
+            padding: 8px 20px;
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .tab.active {
+            background: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
+        }
+
+        .product-icon {
+            width: 60px;
+            height: 60px;
+            background: #f0f8ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .product-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--primary-color);
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .product-category {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-meta {
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .download-link {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .download-link:hover {
+            text-decoration: underline;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-top: 50px;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: var(--radius);
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-secondary);
+            display: none;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        .faq-icon {
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #999;
+            padding: 50px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 15px;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: var(--shadow-md);
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .search-box {
+                display: none; /* Simplify for mobile */
+            }
+
+            .hero {
+                padding: 25px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .cta-group {
+                justify-content: center;
+            }
+
+            .hero-image {
+                flex: 0 0 100%;
+                order: -1;
+            }
+
+            .step-wizard {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .step-wizard::before {
+                display: none;
+            }
+
+            .step-item {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                text-align: left;
+            }
+
+            .step-icon {
+                margin: 0;
+                min-width: 40px;
+                height: 40px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5L12 22l10-8.5-5-2.5-5 2.5z"/>
+                </svg>
+                HP驱动助手
+            </a>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#drivers">驱动下载</a></li>
+                    <li><a href="#support">技术支持</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                    <li><a href="#">企业服务</a></li>
+                </ul>
+            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="输入型号或序列号...">
+                <button>🔍</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>轻松获取惠普驱动程序<br>保障设备最佳性能</h1>
+                <p>无论您需要安装、更新还是修复打印机、电脑或一体机驱动，我们提供安全、官方的下载资源与一键安装向导。</p>
+                <div class="cta-group">
+                    <a href="#drivers" class="btn btn-primary">立即下载</a>
+                    <a href="#guide" class="btn btn-secondary">查看安装教程</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://picsum.photos/seed/hpsetup/400/300" alt="电脑与打印机驱动设置示意图">
+            </div>
+        </section>
+
+        <!-- Quick Guide Section -->
+        <section id="guide" class="guide-section">
+            <div class="section-title">
+                <span>三步快速安装指南</span>
+            </div>
+            <div class="step-wizard">
+                <div class="step-item active">
+                    <div class="step-icon">1</div>
+                    <div class="step-title">确认设备型号</div>
+                </div>
+                <div class="step-item active">
+                    <div class="step-icon">2</div>
+                    <div class="step-title">选择操作系统</div>
+                </div>
+                <div class="step-item active">
+                    <div class="step-icon">3</div>
+                    <div class="step-title">下载并安装</div>
+                </div>
+            </div>
+            <p style="margin-top: 20px; color: var(--text-secondary); font-size: 0.9rem;">
+                * 系统会自动检测您的电脑配置。如果不确定具体型号，请查看设备底部的标签或开机自检信息。
+            </p>
+        </section>
+
+        <!-- Driver Download Section -->
+        <section id="drivers">
+            <div class="section-title">
+                <span>热门驱动程序下载</span>
+                <a href="#" style="font-size: 0.9rem; color: var(--primary-color);">查看全部型号 &rarr;</a>
+            </div>
+
+            <div class="filter-tabs">
+                <button class="tab active">全部</button>
+                <button class="tab">打印机</button>
+                <button class="tab">电脑笔记本</button>
+                <button class="tab">一体机</button>
+                <button class="tab">外设配件</button>
+            </div>
+
+            <div class="product-grid">
+                <!-- Card 1 -->
+                <article class="product-card">
+                    <div class="product-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-4-9H6v4h12V3z"/></svg>
+                    </div>
+                    <h3 class="product-name">DeskJet 2700</h3>
+                    <div class="product-category">喷墨打印机</div>
+                    <div class="product-meta">
+                        <span>Windows / Mac</span>
+                        <a href="#" class="download-link">下载驱动 &darr;</a>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="product-card">
+                    <div class="product-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 11 8.76l1-1.36 1 1.36L15.38 12 17 10.83 14.92 8H20v6z"/></svg>
+                    </div>
+                    <h3 class="product-name">LaserJet Pro M404</h3>
+                    <div class="product-category">激光打印机</div>
+                    <div class="product-meta">
+                        <span>Windows / Server</span>
+                        <a href="#" class="download-link">下载驱动 &darr;</a>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="product-card">
+                    <div class="product-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
+                    </div>
+                    <h3 class="product-name">EliteBook 840 G8</h3>
+                    <div class="product-category">商务笔记本</div>
+                    <div class="product-meta">
+                        <span>Windows 10/11</span>
+                        <a href="#" class="download-link">下载驱动 &darr;</a>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="product-card">
+                    <div class="product-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/></svg>
+                    </div>
+                    <h3 class="product-name">Envy 6055</h3>
+                    <div class="product-category">无线一体机</div>
+                    <div class="product-meta">
+                        <span>Windows / Mac</span>
+                        <a href="#" class="download-link">下载驱动 &darr;</a>
+                    </div>
+                </article>
+
+                 <!-- Card 5 -->
+                 <article class="product-card">
+                    <div class="product-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-10 16H5v-2h6v2zm0-4H5v-2h6v2zm0-4H5V9h6v2zm8 8h-6v-2h6v2zm0-4h-6v-2h6v2zm0-4h-6V9h6v2z"/></svg>
+                    </div>
+                    <h3 class="product-name">OfficeJet Pro 9015</h3>
+                    <div class="product-category">多功能一体机</div>
+                    <div class="product-meta">
+                        <span>Windows / Mac</span>
+                        <a href="#" class="download-link">下载驱动 &darr;</a>
+                    </div>
+                </article>
+
+                <!-- Card 6 -->
+                <article class="product-card">
+                    <div class="product-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/></svg>
+                    </div>
+                    <h3 class="product-name">Spectre x360</h3>
+                    <div class="product-category">二合一笔记本</div>
+                    <div class="product-meta">
+                        <span>Windows 10/11</span>
+                        <a href="#" class="download-link">下载驱动 &darr;</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq-section">
+            <div class="section-title">
+                <span>常见问题解答 (FAQ)</span>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    如何找到我的设备序列号？
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    您可以在打印机的机身背面、底座标签或电源适配器上找到序列号（通常以字母S开头）。对于笔记本电脑，可以在BIOS界面或机箱标签上找到。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    下载的驱动程序是官方版本吗？
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    是的，本站提供的所有惠普驱动程序均经过严格审核，确保与HP官方发布的版本一致，安全可靠，不会包含恶意软件。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    安装驱动时提示“找不到设备”怎么办？
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    请首先检查USB连接是否正常，尝试更换数据线或端口。如果是网络打印机，请确保电脑与打印机在同一网络环境下，并重启路由器。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    如何卸载旧驱动程序？
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    在Windows系统中，打开“设备管理器”，右键点击设备名称选择“卸载设备”，勾选“删除此设备的驱动程序软件”即可彻底卸载。
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>关于HP驱动助手</h3>
+                <p style="font-size: 0.9rem; line-height: 1.8;">
+                    我们致力于为用户提供最便捷的惠普驱动程序下载服务，帮助用户解决设备连接、打印故障及性能优化问题。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h3>快速链接</h3>
+                <ul>
+                    <li><a href="#">驱动下载首页</a></li>
+                    <li><a href="#">打印机支持</a></li>
+                    <li><a href="#">电脑支持</a></li>
+                    <li><a href="#">软件下载</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>帮助中心</h3>
+                <ul>
+                    <li><a href="#">安装指南</a></li>
+                    <li><a href="#">故障排查</a></li>
+                    <li><a href="#">联系客服</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>联系方式</h3>
+                <ul>
+                    <li>客服热线：800-810-3888</li>
+                    <li>服务时间：7x24小时</li>
+                    <li>电子邮箱：support@hp.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 HP Driver Center. All Rights Reserved. 本页面为演示页面，非惠普官方直接运营。</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('active');
+        }
+
+        // FAQ Toggle
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // Close all items
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                faq.classList.remove('active');
+            });
+
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // Tab Switching Logic
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                // In a real app, this would filter the product grid
+                // For this demo, we just simulate visual feedback
+            });
+        });
+    </script>
+</body>
+      </html>
